@@ -20,9 +20,4 @@ jobs:
       - name: Install npm dependencies
         run: npm ci
      
-<<<<<<< HEAD
      
-=======
-      - name: Deploy lambda function
-        run: sls deploy
->>>>>>> 85257f4936a4e0d97e1343bb82fbb401b84aefff
