@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Lambda function with hello world.
+Resources:
+  LambdaHello:
+    Type: AWS::Lambda::Function
+    Properties: 
+      Code: 
+        ZipFile: release.zip
+      Environment: 
+        Variables: 
+          PERSON_NAME : Smith
+      Handler: index.lambda_handler
+      Role: !Ref LambdaHelloIamRole
+      Runtime: nodejs
+      PackageType: Zip
+      TracingConfig:
+        Mode: Active
+  
+  LambdaHelloIamRole:
+    Type: AWS::IAM::Role
+    Properties: 
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - lambda.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Description: Allow lamda function for cloud watch logs
+      ManagedPolicyArns: 
+        - 'arn:aws:iam::${AWS::AccountId}:policy/service-role/${RoleName}'
+        - RoleName: AWSLambdaBasicExecutionRole-22b6d590-977f-4370-a420-fd304b5a1bd4
