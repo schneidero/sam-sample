@@ -11,7 +11,7 @@ Resources:
           PERSON_NAME : Smith
       Handler: index.lambda_handler
       Role: !Ref LambdaHelloIamRole
-      Runtime: nodejs
+      Runtime: nodejs16.x
       PackageType: Zip
       TracingConfig:
         Mode: Active
