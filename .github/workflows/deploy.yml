@@ -44,5 +44,5 @@ jobs:
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
           name: DeployStack
-          template: template.json
+          template: template.yaml
      
