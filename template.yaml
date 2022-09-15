@@ -30,4 +30,4 @@ Resources:
               - 'sts:AssumeRole'
       Description: Allow lamda function for cloud watch logs
       ManagedPolicyArns: 
-        - arn:aws:iam::215620036031:role/testrole
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
