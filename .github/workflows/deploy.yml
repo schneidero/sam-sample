@@ -23,7 +23,7 @@ jobs:
       - name: Install  dependencies and zip project
         run: |
           npm ci
-          zip -r ./artifacts/${{ github.repository }}/release.zip . -x ".git/*" ".github/*"
+          zip -r release.zip . -x ".git/*" ".github/*"
           ls
 
       - name: Configure AWS Credentials
@@ -42,7 +42,7 @@ jobs:
       - name: Push Zip to S3
         uses: jakejarvis/s3-sync-action@v0.3.1
         env:
-          SOURCE_DIR: './artifacts/${{ github.repository }}/release.zip'
+          SOURCE_DIR: 'release.zip'
           AWS_REGION: 'eu-west-1'
           AWS_S3_BUCKET: 'devops-academy-lambda-artifacts-schneider'
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
