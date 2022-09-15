@@ -5,12 +5,13 @@ Resources:
     Type: AWS::Lambda::Function
     Properties: 
       Code: 
-        ZipFile: release.zip
+        S3Bucket: "devops-academy-lambda-artifacts-schneider"
+        S3Key: "s3://devops-academy-lambda-artifacts-schneider/release.zip"
       Environment: 
         Variables: 
           PERSON_NAME : Smith
-      Handler: index.lambda_handler
-      Role: !Ref LambdaHelloIamRole
+      Handler: handler
+      Role: !GetAtt LambdaHelloIamRole.Arn
       Runtime: nodejs16.x
       PackageType: Zip
       TracingConfig:
