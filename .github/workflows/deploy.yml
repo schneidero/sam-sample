@@ -16,9 +16,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '14.x'
-          
-      - name: Make artifact directory
-        run: mkdir -p ./artifacts/${{ github.repository }}
 
       - name: Install  dependencies and zip project
         run: |
