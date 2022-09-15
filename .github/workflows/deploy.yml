@@ -30,15 +30,15 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
           
-      - name: Create S3 Bucket
-        uses: aws-actions/aws-cloudformation-github-deploy@v1
-        with:
-          name: DeployArtifact
-          template: pre-deploy.yaml
+#       - name: Create S3 Bucket
+#         uses: aws-actions/aws-cloudformation-github-deploy@v1
+#         with:
+#           name: DeployArtifact
+#           template: pre-deploy.yaml
 
       - name: Copy files to the test website with the AWS CLI
         run: |
-          aws s3 sync release.zip devops-academy-lambda-artifacts-schneider
+          aws s3 sync release.zip s3://devops-academy-lambda-artifacts-schneider
 
       - name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
