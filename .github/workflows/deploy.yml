@@ -18,12 +18,12 @@ jobs:
           node-version: '14.x'
 
       - name: Make artifact directory
-        run: mkdir -p ./artifacts/${{ github.repository }}
+        run: mkdir -p ./artifacts
 
       - name: Install  dependencies and zip project
         run: |
           npm ci
-          zip -r ./artifacts/${{ github.repository }}/index.zip . -x ".git/*" ".github/*"
+          zip -r ./artifacts/index.zip . -x ".git/*" ".github/*"
           ls
         
       - name: Configure AWS Credentials
@@ -42,7 +42,7 @@ jobs:
       - name: Push Zip to S3
         uses: jakejarvis/s3-sync-action@v0.3.1
         env:
-          SOURCE_DIR: './artifacts/${{ github.repository }}/index.zip'
+          SOURCE_DIR: './artifacts/index.zip'
           AWS_REGION: 'eu-west-1'
           AWS_S3_BUCKET: 'devops-academy-lambda-artifacts-schneider'
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
