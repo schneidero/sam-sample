@@ -54,7 +54,7 @@ jobs:
         if: steps.check.outputs.exists == 'false'
       - run: echo "Write a file to S3 bucket with name"
         name: " found step"
-        if: steps.check.outputs.exists == 'false'
+        if: steps.check.outputs.exists == 'true'
 
       - name: Push Zip to S3
         uses: jakejarvis/s3-sync-action@v0.3.1
