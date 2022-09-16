@@ -21,7 +21,7 @@ jobs:
         run: |
           npm ci
           zip -r index.zip . -x ".git/*" ".github/*"
-          ls
+          pwd
          
         
       - name: Configure AWS Credentials
