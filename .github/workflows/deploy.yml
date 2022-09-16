@@ -18,7 +18,6 @@ jobs:
           node-version: '14.x'
 
       - name: Install  dependencies and zip project
-        uses: qoqa/action-s3-cp@v1.1
         run: |
           npm ci
           zip -r index.zip . -x ".git/*" ".github/*"
