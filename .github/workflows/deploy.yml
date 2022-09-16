@@ -30,13 +30,13 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
           
-      # - name: Copy files to the test website with the AWS CLI
-      #   run: |
-      #     aws s3 sync release.zip ${{ secrets.S3_BUCKET }}
+      - name: Copy files to the test website with the AWS CLI
+        run: |
+          aws s3 sync release.zip ${{ secrets.S3_BUCKET }}
 
       - name: Deploy to AWS CloudFormation
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
           name: DeployStack
-          template: template.json
+          template: template.yaml
      
