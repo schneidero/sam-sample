@@ -39,6 +39,20 @@ jobs:
       #     name: DeployArtifact
       #     template: pre-deploy.yaml
 
+      - name: Check s3 exists
+      - uses: tuler/s3-check-action@master
+        id: check
+        env:
+          FILE: schneidero/sam-sample/index.zip
+          AWS_REGION: 'eu-west-1'
+          AWS_S3_BUCKET: devops-academy-lambda-artifacts-schneider
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - run: echo "Do your thing"
+        if: steps.check.outputs.exists == 'false'
+      - run: echo "Write a file to S3 bucket with name"
+        if: steps.check.outputs.exists == 'false'
+
       - name: Push Zip to S3
         uses: jakejarvis/s3-sync-action@v0.3.1
         env:
