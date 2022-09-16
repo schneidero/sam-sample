@@ -36,9 +36,10 @@ jobs:
       #   with:
       #     name: DeployArtifact
       #     template: pre-deploy.yaml
-
+      
       - name: Push Zip to S3
-        uses: jakejarvis/s3-sync-action@v0.3.1
+      - uses: actions/checkout@master
+      - uses: jakejarvis/s3-sync-action@v0.3.1
         env:
           SOURCE_DIR: './index.zip'
           AWS_REGION: 'eu-west-1'
