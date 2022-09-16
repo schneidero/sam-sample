@@ -6,7 +6,7 @@ Resources:
     Properties: 
       Code: 
         S3Bucket: "devops-academy-lambda-artifacts-schneider"
-        S3Key: "s3://devops-academy-lambda-artifacts-schneider/schneidero/sam-sample/release.zip"
+        S3Key: "index.zip"
       Environment: 
         Variables: 
           PERSON_NAME : Smith
