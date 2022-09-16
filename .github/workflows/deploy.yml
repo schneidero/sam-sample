@@ -31,13 +31,14 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
           
-      - name: Create S3 Bucket
-        uses: aws-actions/aws-cloudformation-github-deploy@v1
-        with:
-          name: DeployArtifact
-          template: pre-deploy.yaml
+      # - name: Create S3 Bucket
+      #   uses: aws-actions/aws-cloudformation-github-deploy@v1
+      #   with:
+      #     name: DeployArtifact
+      #     template: pre-deploy.yaml
 
       - name: Push Zip to S3
+        uses: actions/checkout@master
         uses: jakejarvis/s3-sync-action@v0.3.1
         env:
           SOURCE_DIR: './index.zip'
