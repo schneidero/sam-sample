@@ -10,6 +10,7 @@ Resources:
       Environment: 
         Variables: 
           PERSON_NAME : Smith
+          S3_BUCKET_NAME : devops-academy-lambda-artifacts-schneider
       Handler: index.handler
       Role: !GetAtt LambdaHelloIamRole.Arn
       Runtime: nodejs16.x
