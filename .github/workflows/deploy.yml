@@ -33,11 +33,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: eu-west-1
           
-      # - name: Create S3 Bucket
-      #   uses: aws-actions/aws-cloudformation-github-deploy@v1
-      #   with:
-      #     name: DeployArtifact
-      #     template: pre-deploy.yaml
 
       - name: Check s3 exists
         uses: tuler/s3-check-action@master
