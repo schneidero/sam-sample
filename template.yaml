@@ -31,7 +31,29 @@ Resources:
                 - lambda.amazonaws.com
             Action:
               - 'sts:AssumeRole'
-              - 's3:*'
+          - Effect: Allow
+            Action: 
+              - "s3:PutObject"
+            Resource: 
+            - arn:aws:s3:::devops-academy-lambda-artifacts-schneider
+            - arn:aws:s3:::devops-academy-lambda-artifacts-schneider/*
+
       Description: Allow lamda function for cloud watch logs
       ManagedPolicyArns: 
         - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+
+  # LambdaS3Role:
+  #   Type: AWS::IAM::Role
+  #   Properties: 
+  #     AssumeRolePolicyDocument:
+  #       Version: "2012-10-17"
+  #       Statement:
+  #         - Effect: Allow
+  #           Principal:
+  #             Service:
+  #               - s3.amazonaws.com
+  #           Action:
+  #             - 's3:*'
+  #     Description: Allow lamda function for to consume s3
+  #     ManagedPolicyArns: 
+  #       - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
