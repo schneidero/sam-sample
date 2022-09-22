@@ -50,11 +50,11 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: Creating S3 bucket when it doesn't exists
-          if: steps.check.outputs.exists == 'false'
-          uses: aws-actions/aws-cloudformation-github-deploy@v1
-          with:
-            name: DeployArtifact
-            template: pre-deploy.yaml
+        if: steps.check.outputs.exists == 'false'
+        uses: aws-actions/aws-cloudformation-github-deploy@v1
+        with:
+          name: DeployArtifact
+          template: pre-deploy.yaml
 
       - name: Push Zip to S3
         uses: jakejarvis/s3-sync-action@v0.3.1
