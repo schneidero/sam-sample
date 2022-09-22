@@ -16,6 +16,7 @@ Resources:
       PackageType: Zip
       TracingConfig:
         Mode: Active
+      MemorySize: 1024
   
   LambdaHelloIamRole:
     Type: AWS::IAM::Role
