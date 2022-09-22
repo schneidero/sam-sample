@@ -32,7 +32,7 @@ Resources:
             Action:
               - 'sts:AssumeRole'
       Policies:
-        - PolicyName: S3 Access
+        - PolicyName: S3Access
           PolicyDocument:
             Version: '2012-10-17'
             Statement:
